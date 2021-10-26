@@ -11,9 +11,9 @@ setuptools.setup(
     description="A small spider",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="",
+    url="https://github.com/paseofyou/myspider",
     project_urls={
-        "Bug Tracker": "",
+        "Bug Tracker": "https://github.com/paseofyou/myspider/issues",
     },
     classifiers=[
         "Programming Language :: Python :: 3",
