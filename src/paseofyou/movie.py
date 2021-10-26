@@ -1,10 +1,10 @@
-class paseofyou:
+class movie:
     def __init__(self, my_movie):
         self.my_movie = my_movie
         self.get()
 
     def get(self):
-        import httpx
+        import requests
         from lxml import etree
         try:
             # https://x.wxbxkx.com/
@@ -13,11 +13,11 @@ class paseofyou:
             header_ = {
                 "user-agent": "Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/33.0.0.0 Mobile Safari/537.36 MicroMessenger/6.0.0.54_r849063.501 NetType/WIFI"
             }
-            req = httpx.get(url, headers=header_,verify=False)
+            req = requests.get(url, headers=header_)
             tree = etree.HTML(req.content.decode("utf-8"))
             if tree.xpath("/html/body/div/main/article[1]/div/header/h2/a//@href"):
                 urls = tree.xpath("/html/body/div/main/article[1]/div/header/h2/a//@href")[0]
-                reqs = httpx.get(urls, headers=header_,verify=False)
+                reqs = requests.get(urls, headers=header_)
                 trees = etree.HTML(reqs.content.decode("utf-8"))
                 test = trees.xpath("/html/body/div/main/article/div/p")
                 print(tree.xpath("/html/body/div/main/article[1]/div/header/h2/a/text()")[0])

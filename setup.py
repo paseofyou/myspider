@@ -4,8 +4,8 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="src",
-    version="0.0.1",
+    name="paseofyou",
+    version="0.0.12",
     author="markstar",
     author_email="863630017@qq.com",
     description="A small spider",
@@ -25,6 +25,6 @@ setuptools.setup(
     python_requires=">=3.6",
     install_requires=[
         'lxml',
-        'httpx'
+        'requests'
     ]
 )
