@@ -1,10 +1,10 @@
 class movie:
     def __init__(self, my_movie):
         self.my_movie = my_movie
-        self.get()
         self.name = None
         self.url = None
         self.key = None
+        self.get()
 
     def get(self):
         import requests
