@@ -2,6 +2,9 @@ class movie:
     def __init__(self, my_movie):
         self.my_movie = my_movie
         self.get()
+        self.name = None
+        self.url = None
+        self.key = None
 
     def get(self):
         import requests
@@ -20,24 +23,24 @@ class movie:
                 reqs = requests.get(urls, headers=header_)
                 trees = etree.HTML(reqs.content.decode("utf-8"))
                 test = trees.xpath("/html/body/div/main/article/div/p")
-                print(tree.xpath("/html/body/div/main/article[1]/div/header/h2/a/text()")[0])
+                self.name = (tree.xpath("/html/body/div/main/article[1]/div/header/h2/a/text()")[0])
             else:
                 test = tree.xpath("/html/body/div/main/article/div/p")
-                print(tree.xpath("/html/body/div/main/article/header/h1/text()")[0])
+                self.name = (tree.xpath("/html/body/div/main/article/header/h1/text()")[0])
             for i in test:
                 if not i.xpath("./text()"):
                     continue
                 else:
                     try:
                         if i.xpath("./text()")[0] == '视频：':
-                            print(i.xpath('.//a[contains(@href, "https://pan")]/@href')[0])
-                            print(i.xpath("./text()")[1].strip().replace(r"\xa0 \xa0", ''))
+                            self.url = (i.xpath('.//a[contains(@href, "https://pan")]/@href')[0])
+                            self.key = (i.xpath("./text()")[1].strip().replace(r"\xa0 \xa0", ''))
                             break
                     except Exception as r:
-                        print("已找到电影，但出现未知错误")
-                        print(r)
+                        self.url = ("已找到电影，但出现未知错误")
+                        self.key = (r)
                         break
         except Exception as r:
-            print("出问题了:"+str(r))
+            self.key = ("出问题了:" + str(r))
 
 
