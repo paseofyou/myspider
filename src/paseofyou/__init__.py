@@ -2,6 +2,6 @@ from paseofyou import movie
 
 
 def name(strs: str):
-    movie.movie(strs.strip())
-    print(movie.name, movie.url, movie.key)
-    return (movie.name, movie.url, movie.key)
+    video = movie.movie(strs.strip())
+    print(video.name, video.url, video.key)
+    return (video.name, video.url, video.key)
